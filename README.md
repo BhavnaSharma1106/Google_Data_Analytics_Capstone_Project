@@ -26,7 +26,7 @@ The primary business task is to investigate how annual members and casual riders
 
 <h4>Data Sources</h4>
 
-The data for analysis was obtained from Motivate International Inc. under this license. The dataset spans from 2016 to 2023, containing .csv files with monthly and quarterly records.
+The data for analysis was obtained from [Motivate International Inc.](https://divvy-tripdata.s3.amazonaws.com/index.html) under this [license](https://divvybikes.com/data-license-agreement). The dataset spans from 2016 to 2023, containing .csv files with monthly and quarterly records.
 
 <h4>Data Preparation</h4>
 
