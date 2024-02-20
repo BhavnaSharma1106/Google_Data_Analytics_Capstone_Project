@@ -1,0 +1,43 @@
+Google Data Analytics Capstone Project - Part 2 
+
+Summary:
+
+This report summarizes the second part of the Google Data Analytics Capstone Project, focusing on the analysis of Divvy bike-sharing data from 2019 and 2020.
+
+Analysis Methods:
+
+Part 2(a):
+
+Data Source: Full 2019 and 2020 datasets
+
+Tools: SQL for data cleaning and transformation, Tableau for visualization
+
+Challenges:
+Difficulty with data transformation using ALTER TABLE in SQLite.
+Manual adjustment of date formats in CSV files for compatibility with Tableau.
+Defaulted Tableau joins linking years instead of specific dates.
+
+Outcome: Visualization depicting trip start stations, trip counts, and subscriber counts for 2019 and 2020.
+
+Part 2(b):
+
+Data Source: Divvy_Trips_2019_Q1 and Divvy_Trips_2020_Q1 datasets
+
+Tools: R Posit Cloud, R Script, ggplot2
+
+Challenges:
+Limited data volume in R Posit Cloud necessitating clear row definition during export.
+
+Outcome: Comparison plots of trip duration and day of the week for 2019 and 2020.
+
+Conclusions:
+
+Both analysis methods offer insights into Divvy bike usage patterns.
+Identification of stations with high subscriber activity can guide targeted marketing efforts.
+Further exploration of the full 2019 and 2020 datasets can reveal seasonal trends and user behavior nuances.
+
+Recommendations:
+
+Explore advanced data transformation techniques, such as Python scripts, for handling complex datasets.
+Delve deeper into user demographics and trip duration analysis for additional insights.
+Refine marketing strategies based on identified high-activity stations and user segments.
