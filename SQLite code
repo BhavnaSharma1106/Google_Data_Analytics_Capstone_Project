@@ -24,7 +24,7 @@ GROUP BY from_station_name;
 
 
 
-6.	Creating a summary table of 2019
+Creating a summary table of 2019
 
 CREATE TABLE IF NOT EXISTS summary_2019 (
     from_station_name TEXT,
@@ -56,32 +56,7 @@ GROUP BY from_station_name
 ORDER BY station_frequency DESC;
 
 
-7.	Calculating total number of Members from 2020 data set.
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8.	Calculating total number of Casual riders from 2020 data set.
-
- 
-
-
-9.	Calculating number of trips from each station, from 2020 data-set and creating a new table named stations_2020.
+Calculating number of trips from each station, from 2020 data-set and creating a new table named stations_2020.
 
 CREATE TABLE IF NOT EXISTS stations_2020 (
     start_station_nameTEXT,
@@ -97,7 +72,7 @@ GROUP BY start_station_name;
 
 
 
-10.	Joining two tables: stations_2019 and stations_2020 and creating a new table combined_data
+Joining two tables: stations_2019 and stations_2020 and creating a new table combined_data
 
 CREATE TABLE IF NOT EXISTS combined_data AS
 SELECT 
@@ -117,7 +92,7 @@ SELECT
 FROM "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1";
 
 
-11.	Separating time from start_time in Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1
+Separating time from start_time in Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1
 
 -- Add a new column to the existing table
 ALTER TABLE "Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1"
@@ -128,7 +103,7 @@ UPDATE "Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1"
 SET s_time = SUBSTR(start_time, 12, 8);
 
 
-12.	Separating time from end_time in Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1
+Separating time from end_time in Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1
 
 -- Add a new column to the existing table
 ALTER TABLE "Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1"
@@ -139,7 +114,7 @@ UPDATE "Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1"
 SET e_time = SUBSTR(end_time, 12, 8);
 
 
-13.	Create a new column “length_of_trip” by subtracting s_time from e_time
+Create a new column “length_of_trip” by subtracting s_time from e_time
 
 --Add a new column to store the length of the trip
 ALTER TABLE "Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1"
@@ -153,7 +128,7 @@ SET length_of_trip = TIME(
 );
 
 
-14.	Separating day from start_time
+Separating day from start_time
 
 -- Add a new column to store the day of the week
 ALTER TABLE "Divvy_Trips_2019_Q1 - Divvy_Trips_2019_Q1"
@@ -172,7 +147,7 @@ SET day_of_week = CASE
                     END;
 
 
-15.	Separating day from start_time in Divvy_Trips_2020_Q1 – Divvy_Trips_2020_Q1
+Separating day from start_time in Divvy_Trips_2020_Q1 – Divvy_Trips_2020_Q1
 
 -- Add a new column to store the day of the week
 ALTER TABLE "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1"
@@ -191,7 +166,7 @@ SET day_of_week = CASE
                     END;
 
 
-16.	Separating s_time from start_time in Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1
+Separating s_time from start_time in Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1
 
 -- Add a new column to the existing table
 ALTER TABLE "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1"
@@ -202,7 +177,7 @@ UPDATE "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1"
 SET s_time = SUBSTR(start_time, 12, 8);
 
 
-17.	Separating e_time from end_time in Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1
+Separating e_time from end_time in Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1
 
 -- Add a new column to the existing table
 ALTER TABLE "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1"
@@ -213,7 +188,7 @@ UPDATE "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1"
 SET e_time = SUBSTR(end_time, 12, 8);
 
 
-18.	Create a new column “length_of_trip” by subtracting s_time from e_time
+Create a new column “length_of_trip” by subtracting s_time from e_time
 
 Add a new column to store the length of the trip
 ALTER TABLE "Divvy_Trips_2020_Q1 - Divvy_Trips_2020_Q1"
@@ -227,7 +202,7 @@ SET length_of_trip = TIME(
 );
 
 
-19.	Combining data from both tables:
+Combining data from both tables:
 
 -- Create a new table "summary_data"
 CREATE TABLE summary_data AS
