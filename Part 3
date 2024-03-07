@@ -1,0 +1,84 @@
+Part 3 (Using Python)
+
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define the folder path
+folder_path = "/Users/bhavnasharma/Downloads/Final_Python"
+
+# Initialize an empty list to store summary data
+summary_data = []
+
+# Iterate over each file in the folder
+for filename in os.listdir(folder_path):
+    # Check if the file is an Excel file
+    if filename.endswith(".xlsx") or filename.endswith(".xls"):
+        # Read the Excel file
+        file_path = os.path.join(folder_path, filename)
+        df = pd.read_excel(file_path)
+        
+        # Filter columns of interest
+        columns_of_interest = ["start_time", "stop_time", "usertype", "from_station_name", "to_station_name", "day_of_week"]
+        df = df[columns_of_interest]
+        
+        # Extract year from filename
+        year = int(filename.split(".")[0])  # Assuming the filename is in the format "YYYY.xlsx"
+        
+        # Calculate total number of trips
+        total_trips = len(df)
+        
+        # Calculate number of trips by Subscribers and Customers
+        trips_by_subscribers = df[df['usertype'] == 'Subscriber'].shape[0]
+        trips_by_customers = df[df['usertype'] == 'Customer'].shape[0]
+        
+        # Calculate month with maximum trips
+        df['month'] = pd.to_datetime(df['start_time']).dt.month
+        max_month = df['month'].value_counts().idxmax()
+        
+        # Append the summary data to the list
+        summary_data.append(
+            {
+                'Year': year,
+                'Total Trips': total_trips,
+                'Trips by Subscribers': trips_by_subscribers,
+                'Trips by Customers': trips_by_customers,
+                'Month with Max Trips': max_month
+            }
+        )
+
+# Convert the list of dictionaries into a DataFrame
+all_data = pd.DataFrame(summary_data)
+
+# Save the summary data to an Excel file
+output_excel_path = os.path.join(folder_path, "synopsis_all.xlsx")
+all_data.to_excel(output_excel_path, index=False)
+
+# Save the summary data to a CSV file
+output_csv_path = os.path.join(folder_path, "synopsis_all.csv")
+all_data.to_csv(output_csv_path, index=False)
+
+# Read the saved Excel file
+saved_data = pd.read_excel(output_excel_path)
+
+# Display the saved data
+print("Data from synopsis_all.xlsx:")
+print(saved_data)
+
+# Create line graphs for Subscribers and Customers
+plt.figure(figsize=(10, 6))
+
+# Line graph for Subscribers
+plt.plot(saved_data['Year'], saved_data['Trips by Subscribers'], marker='o', label='Subscribers')
+
+# Line graph for Customers
+plt.plot(saved_data['Year'], saved_data['Trips by Customers'], marker='o', label='Customers')
+
+plt.title('Variations in Number of Trips (2013-2023)')
+plt.xlabel('Year')
+plt.ylabel('Number of Trips')
+plt.xticks(saved_data['Year'])  # Set x-axis ticks to years
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
